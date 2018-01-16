@@ -6,15 +6,6 @@ const menusRouter = express.Router();
 
 const db = new sqlite3.Database(process.env.TEST_DATABASE || './database.sqlite');
 
-// menusRouter.use((req, res, next) => {
-//     if(req.method == 'POST' || req.method == 'PUT') {
-//         if(!req.body.menu.title) {
-//             return res.sendStatus(400);
-//         }
-//     }
-//     next();
-// });
-
 menusRouter.get('/', (req, res, next) => {
     db.all("SELECT * FROM Menu", (err, menus) => {
         if (err) {
